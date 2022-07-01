@@ -9,11 +9,12 @@ void FillArray(int numArr[], const int SIZE)
 		numArr[i] = rand(); // Генератор рандомных чисел
 	}
 }
-void FillArray(std::vector<int> arr, int i)
+
+void FillArray(std::vector<int>&arr, int i)
 {
 	for (int i = 0; i < arr.size(); i++)
 	{
-		arr[i] = rand(); // Генератор рандомных чисел
+		arr.push_back(rand());  // Генератор рандомных чисел
 	}
 }
 void LinkPrint(int numArr[], const int SIZE)
@@ -33,9 +34,20 @@ void LinkPrint(std::vector<int> arr)
 	}
 }
 
-void SimpleSort(int numArr[], const int SIZE)
+void SimpleSort(std::vector<int>& arr)
 {
-
+	for (int i = 0; i < arr.size(); ++i)
+	{
+		for (int j = i; j < arr.size(); ++j)
+		{
+			if (arr[i] < arr[j])
+			{
+				auto tmp = arr[i];
+				arr[j] = arr[i];
+				arr[j] = tmp;
+			}
+		}
+	}
 }
 
 void LinksSort(int numArr[], const int SIZE)
@@ -50,19 +62,14 @@ void Shrink(std::vector<int>& arr)
 {
 	arr.shrink_to_fit();
 }
+
 int main()
 {
 	srand(time(NULL)); // Отсчёт секунд от 1970 года для генерации по настоящему случайных чисел
-	//const int SIZE = 20;
-	//int numArr[SIZE];
 	std::vector<int> numArr;
-	for (int i = 0; i < 1000000; ++i)
-	{
-		numArr.push_back(rand());
-	}
-	Shrink(numArr); // не меняет ёмкость вектора
+	FillArray(numArr, 100000);
 	Swap(numArr); // меняет ёмкость вектора
-	//FillArray(numArr, n);
+	SimpleSort(numArr);
 	LinkPrint(numArr);
 	return 0;
 }
