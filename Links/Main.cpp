@@ -12,7 +12,7 @@ void FillArray(int numArr[], const int SIZE)
 
 void FillArray(std::vector<int>&arr, int i)
 {
-	for (int i = 0; i < arr.size(); i++)
+	for (auto i = 0; i < arr.size(); i++)
 	{
 		arr.push_back(rand());  // Генератор рандомных чисел
 	}
@@ -28,7 +28,7 @@ void LinkPrint(int numArr[], const int SIZE)
 void LinkPrint(std::vector<int> arr)
 {
 	std::cout << "Adress: \tData: " << "\n";
-	for (int i = 0; i < arr.size(); i++)
+	for (auto i = 0; i < arr.size(); i++)
 	{
 		std::cout << &(arr[i]) << "\t" << arr[i] << "\n";
 	}
@@ -36,9 +36,9 @@ void LinkPrint(std::vector<int> arr)
 
 void SimpleSort(std::vector<int>& arr)
 {
-	for (int i = 0; i < arr.size(); ++i)
+	for (auto i = 0; i < arr.size(); ++i)
 	{
-		for (int j = i; j < arr.size(); ++j)
+		for (auto j = i; j < arr.size(); ++j)
 		{
 			if (arr[i] < arr[j])
 			{
